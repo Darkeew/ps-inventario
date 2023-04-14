@@ -1,1 +1,0 @@
-powershell -ExecutionPolicy Bypass -Command ".\script.ps1"
