@@ -1,6 +1,7 @@
 # ps-inventario
+Command Prompt >>
 ```bash
-cd LETRA-USB:
+LETRA-USB:
 git clone https://github.com/Darkeew/ps-inventario
 ```
 
