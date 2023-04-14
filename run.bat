@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -Command ".\get_information.ps1"
