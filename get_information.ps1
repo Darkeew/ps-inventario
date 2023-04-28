@@ -10,3 +10,20 @@ $USR = $COMPUTERINFO | Select-Object -ExpandProperty WindowsRegisteredOwner
 $newRow = "$MANUFACTURER $MODEL,$SN,$PROCESSOR,$RAM GB,$DISKTYPE,$USR"
 
 "$newRow" | Add-Content -Path .\inventario.csv
+
+function Decode {
+    If ($args[0] -is [System.Array]) {
+        [System.Text.Encoding]::ASCII.GetString($args[0])
+    }
+    Else {
+        "Not Found"
+    }
+}
+ForEach ($Monitor in Get-WmiObject WmiMonitorID -Namespace root\wmi) {  
+    $Manufacturer = Decode $Monitor.ManufacturerName -notmatch 0
+    $Name = Decode $Monitor.UserFriendlyName -notmatch 0
+    $Serial = Decode $Monitor.SerialNumberID -notmatch 
+	
+    $NewRow2 = "$Manufacturer, $Name, $Serial"
+    "$NewRow2" | Add-Content -Path .\monitor.csv
+}
